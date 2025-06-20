@@ -135,3 +135,14 @@ console.log(myCircle.getArea())
 
 const shapes = [new Rectangle(10, 20), new Circle(5),  new Rectangle(3, 3)] // НЕ ЗНАЮ ЧТО ПРИМЕНЯТЬ
 console.log(shapes)
+
+// Даты
+
+// 🧩 Задача 1: Вывести текущую дату в формате ДД.ММ.ГГГГ
+// Пример: 12.06.2025
+
+const naw = new Date()
+const day = naw.getDate()
+const month = naw.getMonth()
+const year = naw.getFullYear()
+console.log(`${day}.${month}.${year}`)
