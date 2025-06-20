@@ -36,9 +36,30 @@ class Admin extends User {
     this.role = role
   }
   getInfo() {
-    return `Name: ${this.name}, Email: ${this.email}, Role: ${this.admin}`
+    return `Name: ${this.name}, Email: ${this.email}, Role: ${this.role}`
   }
 }
 
 const adminFirst = new Admin('Егор', 'egor@example.com')
-console.log(adminFirst.getInfo())  // не выводит admin
+console.log(adminFirst.getInfo())  // невнимателен был исправил
+
+// 🧩 Задание 3: Инкапсуляция
+// Описание:
+// Создай класс BankAccount:
+// приватные свойства: #balance
+// публичные методы:
+// deposit(amount)
+// withdraw(amount)
+// getBalance()
+// 🔧 Условия:
+// Нельзя снимать больше, чем есть
+// Баланс можно узнать только через метод
+
+class BankAccount {
+  #balance
+  constructor(balance) {
+    this.#balance = balance
+  }
+
+
+}
