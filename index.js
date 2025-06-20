@@ -159,3 +159,23 @@ const newYear = () => { // НЕ САМ СДЕЛАЛ
 }
 
 console.log(newYear())
+
+// 🧩 Задача 3: Функция isBirthday(date)
+// Напиши функцию, которая принимает дату рождения и возвращает true, если сегодня день рождения.
+// isBirthday("1995-06-12") // true, если сегодня 12 июня
+
+function isBirthday(date) {
+  const birthData = new Date(date) // объявляем дату рождения куда будем передавать аргумент
+  const today = new Date() // сегодняшняя дата для сравнения
+
+  const birthDey = birthData.getDate() // день рождения
+  const birthMonth = birthData.getMonth() // месяц рождения
+
+  const todayDay = today.getDate() // сегодняшний день
+  const todayMonth = today.getMonth() // сегодняшний месяц
+
+  return birthDey === todayDay && birthMonth === todayMonth // сравнение если день = дню и месяц = месяцу рождения будет true инече false
+}
+
+console.log(isBirthday('1995-06-12')) // на сегодняшний день false
+console.log(isBirthday('1995-06-20')) // на сегодняшний день true
