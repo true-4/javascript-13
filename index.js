@@ -85,3 +85,53 @@ console.log(myAccount.withdraw(4900))
 console.log(myAccount)
 console.log(myAccount.deposit(30000))
 console.log(myAccount)
+
+// 🧩 Задание 4: Полиморфизм и переопределение методов
+// Описание:
+// Создай класс Shape с методом getArea(), который возвращает 0.
+// Создай 2 наследника:
+// Rectangle(width, height) → getArea() возвращает площадь
+// Circle(radius) → getArea() возвращает π * r²
+// 🔧 Дополнительно:
+//  Сделай общий массив фигур и вычисли суммарную площадь всех объектов.
+// const shapes = [new Rectangle(10, 20), new Circle(5),  new Rectangle(3, 3)];
+// // Вычисляем суммарную площадь всех фигур
+// let totalArea = shapes. (напишите вычисление)
+
+class Shape {
+  getArea() {
+    return 0
+  } 
+}
+
+class Rectangle extends Shape { // наследую свойства у класса Shape
+  constructor(width, height) {
+    super() // наследую свойства у класса Shape
+    this.width = width
+    this.height = height
+  }
+
+  getArea() {
+    return this.width * this.height
+  }
+}
+
+class Circle extends Shape {
+  constructor(radius) {
+    super()
+    this.radius = radius
+  }
+
+  getArea() {
+    return (Math.PI * this.radius ** 2).toFixed(2)
+  }
+}
+
+const myRectangle = new Rectangle(4, 3)
+console.log(myRectangle.getArea())
+
+const myCircle = new Circle(2)
+console.log(myCircle.getArea())
+
+const shapes = [new Rectangle(10, 20), new Circle(5),  new Rectangle(3, 3)] // НЕ ЗНАЮ ЧТО ПРИМЕНЯТЬ
+console.log(shapes)
