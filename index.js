@@ -14,7 +14,7 @@ class User {
   }
   getInfo() {
     if (!this.email.includes('@')) {
-      return 'Неверный имаил'
+      throw 'Неверный имаил'
     }
     return `Name: ${this.name}, Email: ${this.email}`
   }
@@ -22,3 +22,23 @@ class User {
 
 const userFirst = new User('Иван', 'ivan@example.com')
 console.log(userFirst.getInfo())
+
+// Задание 2: Наследование: User → Admin
+// Описание:
+// Создай класс Admin, который наследует от User:
+// добавь поле role (по умолчанию: 'admin')
+// переопредели метод getInfo() так, чтобы он также включал роль:
+//  Name: Иван, Email: ivan@example.com, Role: admin
+
+class Admin extends User {
+  constructor(name, email, role = 'admin') {
+    super(name, email)
+    this.role = role
+  }
+  getInfo() {
+    return `Name: ${this.name}, Email: ${this.email}, Role: ${this.admin}`
+  }
+}
+
+const adminFirst = new Admin('Егор', 'egor@example.com')
+console.log(adminFirst.getInfo())  // не выводит admin
