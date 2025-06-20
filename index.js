@@ -179,3 +179,20 @@ function isBirthday(date) {
 
 console.log(isBirthday('1995-06-12')) // на сегодняшний день false
 console.log(isBirthday('1995-06-20')) // на сегодняшний день true
+
+// 🧩 Задача 4: Разница между двумя датами в днях
+// Создай функцию daysBetween(date1, date2), которая считает, сколько дней между двумя датами.
+
+const daysBetween = (date1, date2) => { // ЧАСТИЧНО САМ
+  const dateFirst = new Date(date1) // объявляем переменные для сравнения
+  const dateSecond = new Date(date2) // объявляем переменные для сравнения
+  
+  const difference = Math.abs(dateFirst - dateSecond) // Метод Math.abs() возвращает абсолютное значение числа
+
+  const msPerDay = 1000 * 60 * 60 * 24 // Переводим миллисекунды в дни
+  const daysDiff = Math.round(difference / msPerDay)
+
+  return daysDiff
+}
+
+console.log(daysBetween('1995-06-12', '1995-06-20'))
