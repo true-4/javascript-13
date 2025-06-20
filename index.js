@@ -62,7 +62,7 @@ class BankAccount {
 
   deposit(amount) {
     this._balance += amount
-    return 'Баланс обнулён'
+    return 'Баланс обновлён'
   }
 
   withdraw(amount){
@@ -83,4 +83,5 @@ console.log(myAccount)
 console.log(myAccount.getBalance())
 console.log(myAccount.withdraw(4900))
 console.log(myAccount)
-console.log(myAccount.deposit())
+console.log(myAccount.deposit(30000))
+console.log(myAccount)
