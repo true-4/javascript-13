@@ -146,3 +146,16 @@ const day = naw.getDate()
 const month = naw.getMonth()
 const year = naw.getFullYear()
 console.log(`${day}.${month}.${year}`)
+
+// 🧩 Задача 2: Посчитай, сколько дней осталось до Нового Года
+// Пример: "До нового года осталось 202 дней"
+
+const newYear = () => { // НЕ САМ СДЕЛАЛ
+  const today = new Date()
+  const newYear = new Date(today.getFullYear() + 1, 0, 1)
+  const diff = newYear.getTime() - today.getTime()
+  const days = Math.ceil(diff / (1000 * 60 * 60 * 24))
+  return `Новый год через ${days}`
+}
+
+console.log(newYear())
