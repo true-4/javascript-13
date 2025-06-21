@@ -196,3 +196,11 @@ const daysBetween = (date1, date2) => { // ЧАСТИЧНО САМ
 }
 
 console.log(daysBetween('1995-06-12', '1995-06-20'))
+
+// 🧩 Задача 5: Таймер на 5 секунд
+// Сделай простой таймер с помощью setTimeout, который через 5 секунд выведет в консоль текущее время.
+
+setTimeout(() => {
+  const now = new Date()
+  console.log(now.toString())
+}, 5000)
