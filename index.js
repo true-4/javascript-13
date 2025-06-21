@@ -1,0 +1,206 @@
+// Задание 1: Класс User
+// Описание:
+// Создай класс User, у которого есть:
+// свойства: name, email
+// метод getInfo(), который возвращает строку вида:
+//  Name: Иван, Email: ivan@example.com
+// 🔧 Дополнительно:
+//  Добавь валидацию: если email не содержит @, выбрасывай ошибку.
+
+class User {
+  constructor(name, email) {
+    this.name = name
+    this.email = email
+  }
+  getInfo() {
+    if (!this.email.includes('@')) {
+      throw 'Неверный имаил'
+    }
+    return `Name: ${this.name}, Email: ${this.email}`
+  }
+}
+
+const userFirst = new User('Иван', 'ivan@example.com')
+console.log(userFirst.getInfo())
+
+// Задание 2: Наследование: User → Admin
+// Описание:
+// Создай класс Admin, который наследует от User:
+// добавь поле role (по умолчанию: 'admin')
+// переопредели метод getInfo() так, чтобы он также включал роль:
+//  Name: Иван, Email: ivan@example.com, Role: admin
+
+class Admin extends User {
+  constructor(name, email, role = 'admin') {
+    super(name, email)
+    this.role = role
+  }
+  getInfo() {
+    return `Name: ${this.name}, Email: ${this.email}, Role: ${this.role}`
+  }
+}
+
+const adminFirst = new Admin('Егор', 'egor@example.com')
+console.log(adminFirst.getInfo())  // невнимателен был исправил
+
+// 🧩 Задание 3: Инкапсуляция
+// Описание:
+// Создай класс BankAccount:
+// приватные свойства: #balance
+// публичные методы:
+// deposit(amount)
+// withdraw(amount)
+// getBalance()
+// 🔧 Условия:
+// Нельзя снимать больше, чем есть
+// Баланс можно узнать только через метод
+
+class BankAccount {
+  constructor(balance) {
+    this._balance = balance
+  }
+
+  deposit(amount) {
+    this._balance += amount
+    return 'Баланс обновлён'
+  }
+
+  withdraw(amount){
+    if (this._balance >= amount) {
+      return this._balance -= amount
+    } else {
+      throw 'Недостаточно средств'
+    }
+  }
+
+  getBalance() {
+    return this._balance
+  }
+}
+
+const myAccount = new BankAccount(174900)
+console.log(myAccount)
+console.log(myAccount.getBalance())
+console.log(myAccount.withdraw(4900))
+console.log(myAccount)
+console.log(myAccount.deposit(30000))
+console.log(myAccount)
+
+// 🧩 Задание 4: Полиморфизм и переопределение методов
+// Описание:
+// Создай класс Shape с методом getArea(), который возвращает 0.
+// Создай 2 наследника:
+// Rectangle(width, height) → getArea() возвращает площадь
+// Circle(radius) → getArea() возвращает π * r²
+// 🔧 Дополнительно:
+//  Сделай общий массив фигур и вычисли суммарную площадь всех объектов.
+// const shapes = [new Rectangle(10, 20), new Circle(5),  new Rectangle(3, 3)];
+// // Вычисляем суммарную площадь всех фигур
+// let totalArea = shapes. (напишите вычисление)
+
+class Shape {
+  getArea() {
+    return 0
+  } 
+}
+
+class Rectangle extends Shape { // наследую свойства у класса Shape
+  constructor(width, height) {
+    super() // наследую свойства у класса Shape
+    this.width = width
+    this.height = height
+  }
+
+  getArea() {
+    return this.width * this.height
+  }
+}
+
+class Circle extends Shape {
+  constructor(radius) {
+    super()
+    this.radius = radius
+  }
+
+  getArea() {
+    return +(Math.PI * this.radius ** 2).toFixed(2)
+  }
+}
+
+const myRectangle = new Rectangle(4, 3)
+console.log(myRectangle.getArea())
+
+const myCircle = new Circle(2)
+console.log(myCircle.getArea())
+
+const shapes = [new Rectangle(10, 20), new Circle(5),  new Rectangle(3, 3)]
+console.log(shapes.map(it => it.getArea()).reduce((acc, it) => acc + it))
+
+// Даты
+
+// 🧩 Задача 1: Вывести текущую дату в формате ДД.ММ.ГГГГ
+// Пример: 12.06.2025
+
+const naw = new Date()
+const day = naw.getDate()
+const month = naw.getMonth()
+const year = naw.getFullYear()
+console.log(`${day}.${month}.${year}`)
+
+// 🧩 Задача 2: Посчитай, сколько дней осталось до Нового Года
+// Пример: "До нового года осталось 202 дней"
+
+const newYear = () => { // НЕ САМ СДЕЛАЛ
+  const today = new Date()
+  const newYear = new Date(today.getFullYear() + 1, 0, 1)
+  const diff = newYear.getTime() - today.getTime()
+  const days = Math.ceil(diff / (1000 * 60 * 60 * 24))
+  return `Новый год через ${days}`
+}
+
+console.log(newYear())
+
+// 🧩 Задача 3: Функция isBirthday(date)
+// Напиши функцию, которая принимает дату рождения и возвращает true, если сегодня день рождения.
+// isBirthday("1995-06-12") // true, если сегодня 12 июня
+
+function isBirthday(date) {
+  const birthData = new Date(date) // объявляем дату рождения куда будем передавать аргумент
+  const today = new Date() // сегодняшняя дата для сравнения
+
+  const birthDey = birthData.getDate() // день рождения
+  const birthMonth = birthData.getMonth() // месяц рождения
+
+  const todayDay = today.getDate() // сегодняшний день
+  const todayMonth = today.getMonth() // сегодняшний месяц
+
+  return birthDey === todayDay && birthMonth === todayMonth // сравнение если день = дню и месяц = месяцу рождения будет true инече false
+}
+
+console.log(isBirthday('1995-06-12')) // на сегодняшний день false
+console.log(isBirthday('1995-06-20')) // на сегодняшний день true
+
+// 🧩 Задача 4: Разница между двумя датами в днях
+// Создай функцию daysBetween(date1, date2), которая считает, сколько дней между двумя датами.
+
+const daysBetween = (date1, date2) => { // ЧАСТИЧНО САМ
+  const dateFirst = new Date(date1) // объявляем переменные для сравнения
+  const dateSecond = new Date(date2) // объявляем переменные для сравнения
+  
+  const difference = Math.abs(dateFirst - dateSecond) // Метод Math.abs() возвращает абсолютное значение числа
+
+  const msPerDay = 1000 * 60 * 60 * 24 // Переводим миллисекунды в дни
+  const daysDiff = Math.round(difference / msPerDay)
+
+  return daysDiff
+}
+
+console.log(daysBetween('1995-06-12', '1995-06-20'))
+
+// 🧩 Задача 5: Таймер на 5 секунд
+// Сделай простой таймер с помощью setTimeout, который через 5 секунд выведет в консоль текущее время.
+
+setTimeout(() => {
+  const now = new Date()
+  console.log(now.toString())
+}, 5000)
