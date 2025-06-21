@@ -123,7 +123,7 @@ class Circle extends Shape {
   }
 
   getArea() {
-    return (Math.PI * this.radius ** 2).toFixed(2)
+    return +(Math.PI * this.radius ** 2).toFixed(2)
   }
 }
 
@@ -133,8 +133,8 @@ console.log(myRectangle.getArea())
 const myCircle = new Circle(2)
 console.log(myCircle.getArea())
 
-const shapes = [new Rectangle(10, 20), new Circle(5),  new Rectangle(3, 3)] // НЕ ЗНАЮ ЧТО ПРИМЕНЯТЬ
-console.log(shapes)
+const shapes = [new Rectangle(10, 20), new Circle(5),  new Rectangle(3, 3)]
+console.log(shapes.map(it => it.getArea()).reduce((acc, it) => acc + it))
 
 // Даты
 
